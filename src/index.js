@@ -177,8 +177,8 @@ function MainSelfBot(token) {
       Delete a specified number of messages using bulk delete.
   - **:bomb: \`&nuke\`**:
       Create numerous channels and send messages to them.
-  - **:moyai: \`&message-clear-self\`**
-      Delete all messages send by client (self bot account)`;
+  - **:moyai: \`&message-clear-self {amount}\`**
+      Delete amount messages send by client (self bot account)`;
           message.channel.send(help_content)
       
       }
@@ -387,12 +387,16 @@ function MainSelfBot(token) {
       }
       if (command === 'message-clear-self') {
         console.log(chalk.yellowBright(`[ Admin ] '${message.content}' command used by ${message.author.username}\n`));
-        
-        // Check if the bot has the necessary permissions
-        const botPermissions = message.guild.members.cache.get(client.user.id).permissionsIn(message.channel);
-        if (!botPermissions.has(['MANAGE_MESSAGES'])) {
-          return message.reply("I don't have the necessary permissions to execute this command.");
+        if (!message.guild) {
+          console.log('[ ? ] command used out of guild')
+        } else {
+          const botPermissions = message.guild.members.cache.get(client.user.id).permissionsIn(message.channel);
+          if (!botPermissions.has(['MANAGE_MESSAGES'])) {
+            return message.reply("I don't have the necessary permissions to execute this command.");
+          }
         }
+        // Check if the bot has the necessary permissions
+        
       
         // Check for the number of messages to delete (default to 10 if not provided)
         const messageCount = parseInt(args[0]) || 10;
@@ -452,6 +456,7 @@ function selectUserToken() {
 
       if (selectedUser) {
         const selectedToken = selectedUser.token;
+       
         MainSelfBot(selectedToken);
       } else {
         console.log('[ ! ] Token not found for the given username.');
@@ -489,6 +494,7 @@ function SelfBot() {
       const selectedToken = selectedUser.token;
       console.clear()
       console.log(chalk.yellowBright(welcomeScreen))
+      //console.log(selectedToken)
       MainSelfBot(selectedToken);
     } else {
       console.log('[ ! ] Token not found for the selected username.');
