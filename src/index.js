@@ -3,11 +3,11 @@ const readline = require('readline');
 const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
-const { Client } = require('discord.js-selfbot-v13'); // Import Client from the correct package
+const { Client } = require('discord.js-selfbot-v13');
 const dataFolderPath = path.join(__dirname, 'data');
-const filePath = path.join(__dirname, 'data\\about.txt');
-const { exec } = require('child_process'); // Use path.join for path manipulation
-const { time } = require('console');
+const filePath = path.join(__dirname, 'data', 'about.txt');
+const { exec } = require('child_process');
+
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
