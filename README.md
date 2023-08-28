@@ -1,2 +1,3 @@
 # dezcord
-open src discord self bot
+open run.bat to start
+src/data/userToken.json - saved user tokens
