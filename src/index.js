@@ -177,8 +177,8 @@ function MainSelfBot(token) {
       Delete a specified number of messages using bulk delete.
   - **:bomb: \`&nuke\`**:
       Create numerous channels and send messages to them.
-  - **:gear: \`&etc\`**:
-      Other miscellaneous admin commands.`;
+  - **:moyai: \`&message-clear-self\`**
+      Delete all messages send by client (self bot account)`;
           message.channel.send(help_content)
       
       }
