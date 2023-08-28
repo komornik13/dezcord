@@ -1,0 +1,2 @@
+dezcord is Discord self-bot tool.
+
